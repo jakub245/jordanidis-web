@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+
+  <title>Jakub Jordanidis - Visual &amp; user experience designer</title>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Jordanidis">
+  <meta name="description" content="Jakub Jordanidis - Visual &amp; user experience designer">
+
+  <meta property="og:title" content="Jakub Jordanidis - Visual &amp; user experience designer">
+  <meta property="og:url" content="https://jordanidis.cz">
+  <meta property="og:site_name" content="Jakub Jordanidis">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="webdesign, tvorba webových stránek, ux design">
+
+  <!-- Adobe Fonts (Typekit) - sofia-pro -->
+  <script src="https://use.typekit.net/dug1efj.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+  <style>
+    *, *::before, *::after {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    a { color: inherit; background-color: transparent; }
+    a:active, a:hover { outline-width: 0; }
+    html { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+    body { margin: 0; }
+    img { border-style: none; }
+
+    body {
+      background-image: -ms-linear-gradient(top left, #5547d2 0%, #5044bb 100%);
+      background-image: -moz-linear-gradient(top left, #5547d2 0%, #5044bb 100%);
+      background-image: -o-linear-gradient(top left, #5547d2 0%, #5044bb 100%);
+      background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #5547d2), color-stop(100, #5044bb));
+      background-image: -webkit-linear-gradient(top left, #5547d2 0%, #5044bb 100%);
+      background-image: linear-gradient(to bottom right, #5547d2 0%, #5044bb 100%);
+    }
+    html {
+      font-size: 16px;
+    }
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      font-family: "sofia-pro", sans-serif;
+      color: #867ddd;
+    }
+    section {
+      max-width: 79.125rem;
+      padding: 0 2rem;
+      margin: 0 auto;
+    }
+    @media screen and (min-width: 768px) {
+      section { padding: 0 3rem; }
+    }
+    h1, h2 {
+      color: #fff;
+      font-weight: 300;
+      line-height: 1.4;
+    }
+    h1 span, h2 span { color: #867ddd; }
+    h1 {
+      font-size: 2rem;
+      position: relative;
+      margin: 0 0 5.5rem 0;
+    }
+    @media screen and (min-width: 768px) {
+      h1 { font-size: 2.625rem; }
+    }
+    h1:after {
+      position: absolute;
+      width: 3.25rem;
+      height: 0.25rem;
+      content: "";
+      display: block;
+      background: #fff;
+      bottom: -2rem;
+      left: 0;
+    }
+    h2 {
+      font-size: 1.75rem;
+      margin: 1rem 0;
+    }
+    @media screen and (min-width: 768px) {
+      h2 { font-size: 2.25rem; }
+    }
+    h2 a {
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+    }
+    h2 a:after {
+      position: absolute;
+      width: 0px;
+      height: 0.1875rem;
+      content: "";
+      display: block;
+      bottom: -0.0625rem;
+      left: 0;
+      transition: width 0.3s;
+      background: #fff;
+    }
+    h2 a:hover:after { width: 100%; }
+
+    .header {
+      display: none;
+      text-align: right;
+      line-height: 1rem;
+      padding: 3.5rem 2rem 3.25rem;
+    }
+    @media screen and (min-width: 768px) {
+      .header { display: block; padding: 3.5rem 3rem 3.25rem; }
+    }
+    .header a {
+      display: inline-block;
+      position: relative;
+      margin-left: 2.5rem;
+      color: #fff;
+      text-decoration: none;
+    }
+    .header a:before {
+      min-height: 1px;
+      position: absolute;
+      width: 1.25rem;
+      height: 0.0625rem;
+      content: "";
+      display: block;
+      top: .55rem;
+      left: -1.875rem;
+      background: #fff;
+    }
+    .header a:after {
+      position: absolute;
+      width: 0px;
+      height: 0.125rem;
+      content: "";
+      display: block;
+      bottom: -0.5rem;
+      left: 0;
+      transition: width 0.3s;
+      background: #fff;
+    }
+    .header a:hover:after { width: 100%; }
+
+    @media screen and (min-width: 768px) {
+      .body { display: table; width: 100%; }
+    }
+    .body__logo {
+      padding-top: 6.25rem;
+      text-align: center;
+    }
+    .body__logo img {
+      width: 4.125rem;
+      height: 4.125rem;
+    }
+    @media screen and (min-width: 768px) {
+      .body__logo {
+        display: table-cell;
+        vertical-align: top;
+        text-align: left;
+      }
+      .body__content {
+        display: table-cell;
+        vertical-align: top;
+        width: 48.125rem;
+        padding-left: 3rem;
+      }
+    }
+    .body__item { margin-top: 4.5rem; }
+    .body__subtitle {
+      font-weight: 500;
+      font-size: 0.8125rem;
+      letter-spacing: .25rem;
+    }
+
+    .footer {
+      position: relative;
+      padding-bottom: 2rem;
+    }
+    @media screen and (min-width: 768px) {
+      .footer {
+        margin-left: 1.875rem;
+        line-height: 1.2rem;
+      }
+      .footer:before {
+        min-height: 1px;
+        position: absolute;
+        width: 1.125rem;
+        height: 0.0625rem;
+        content: "";
+        display: block;
+        background: #fff;
+        left: -1.875rem;
+        top: .65rem;
+      }
+    }
+    .footer span {
+      display: block;
+      text-align: center;
+    }
+    @media screen and (min-width: 768px) {
+      .footer span { display: inline; }
+      .footer span + span:before { content: " - "; }
+    }
+    .footer a {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer a:after {
+      position: absolute;
+      width: 0px;
+      height: 0.125rem;
+      content: "";
+      display: block;
+      bottom: -0.4rem;
+      left: 0;
+      transition: width 0.3s;
+      background: #fff;
+    }
+    .footer a:hover { color: #fff; }
+    .footer a:hover:after { width: 100%; }
+  </style>
+
+</head>
+<body>
+
+  <section class="header">napište mi <a href="mailto:jakub@jordanidis.cz">jakub@jordanidis.cz</a></section>
+
+  <section>
+    <div class="body">
+      <div class="body__logo">
+        <img src="data:image/png;base64,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" alt="Jordanidis.cz" />
+      </div>
+      <div class="body__content">
+
+        <div class="body__item">
+          <h1>Visual <span>&amp;</span> user experience designer.</h1>
+        </div>
+
+        <div class="body__item">
+          <div class="body__subtitle">S POTĚŠENÍM JSEM PRACOVAL PRO</div>
+          <h2>Air Bank, ČSOB, O2, DHL, ŠKODA, J&amp;T&nbsp;banka,
+            Česká&nbsp;spořitelna, Forbes<br>
+            <span>a další...</span>
+          </h2>
+        </div>
+
+        <div class="body__item">
+          <div class="body__subtitle">MOJE PRÁCE NALEZNETE</div>
+          <h2><a href="http://dribbble.com/jrdns" target="_blank" rel="noopener">dribbble</a></h2>
+        </div>
+
+        <div class="body__item">
+          <div class="footer">
+            <span>jakub jordanidis</span>
+            <span>praha</span>
+            <span><a href="mailto:jakub@jordanidis.cz">jakub@jordanidis.cz</a></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function() {
+      var baseFont = 16;
+      var h = document.documentElement;
+      var b = document.body;
+
+      function ratio() {
+        var wh = window.innerHeight;
+        var bh = b.offsetHeight * 1.05;
+        return wh / bh;
+      }
+
+      function update() {
+        if (window.innerWidth <= 768) {
+          h.style.fontSize = '';
+          baseFont = 16;
+          return;
+        }
+
+        var r = ratio();
+
+        if (r >= 1 && r <= 1.05) {
+          return;
+        }
+
+        baseFont = baseFont * r;
+        h.style.fontSize = baseFont + 'px';
+
+        for (var i = 0; i < 8; i++) {
+          var r2 = ratio();
+          if (r2 >= 1 && r2 <= 1.05) break;
+          baseFont = baseFont * r2;
+          h.style.fontSize = baseFont + 'px';
+        }
+      }
+
+      window.addEventListener('resize', function() {
+        baseFont = 16;
+        h.style.fontSize = '';
+        update();
+      });
+
+      update();
+    })();
+  </script>
+
+</body>
+</html>
