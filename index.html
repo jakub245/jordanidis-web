@@ -15,217 +15,54 @@
   <meta property="og:url" content="https://jordanidis.cz">
   <meta property="og:site_name" content="Jakub Jordanidis">
   <meta property="og:type" content="website">
-  <meta property="og:description" content="webdesign, tvorba webových stránek, ux design">
+  <meta property="og:description" content="webdesign, tvorba webovych stranek, ux design">
 
-  <!-- Adobe Fonts (Typekit) - sofia-pro -->
   <script src="https://use.typekit.net/dug1efj.js"></script>
   <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
   <style>
-    *, *::before, *::after {
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
     a { color: inherit; background-color: transparent; }
     a:active, a:hover { outline-width: 0; }
-    html { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+    html { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-size: 16px; }
     body { margin: 0; }
     img { border-style: none; }
-
     body {
-      background-image: -ms-linear-gradient(top left, #5547d2 0%, #5044bb 100%);
-      background-image: -moz-linear-gradient(top left, #5547d2 0%, #5044bb 100%);
-      background-image: -o-linear-gradient(top left, #5547d2 0%, #5044bb 100%);
-      background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #5547d2), color-stop(100, #5044bb));
       background-image: -webkit-linear-gradient(top left, #5547d2 0%, #5044bb 100%);
       background-image: linear-gradient(to bottom right, #5547d2 0%, #5044bb 100%);
     }
-    html {
-      font-size: 16px;
-    }
-    html, body {
-      width: 100%;
-      font-family: "sofia-pro", sans-serif;
-      color: #867ddd;
-    }
-    @media screen and (min-width: 769px) {
-      html, body { min-height: 100%; }
-    }
-    section {
-      max-width: 79.125rem;
-      padding: 0 2rem;
-      margin: 0 auto;
-    }
-    @media screen and (min-width: 768px) {
-      section { padding: 0 3rem; }
-    }
-    h1, h2 {
-      color: #fff;
-      font-weight: 300;
-      line-height: 1.4;
-    }
+    html, body { width: 100%; font-family: "sofia-pro", sans-serif; color: #867ddd; }
+    @media screen and (min-width: 769px) { html, body { min-height: 100%; } }
+    section { max-width: 79.125rem; padding: 0 2rem; margin: 0 auto; }
+    @media screen and (min-width: 768px) { section { padding: 0 3rem; } }
+    h1, h2 { color: #fff; font-weight: 300; line-height: 1.4; }
     h1 span, h2 span { color: #867ddd; }
-    h1 {
-      font-size: 2rem;
-      position: relative;
-      margin: 0 0 5.5rem 0;
-    }
-    @media screen and (min-width: 768px) {
-      h1 { font-size: 2.625rem; }
-    }
-    h1:after {
-      position: absolute;
-      width: 3.25rem;
-      height: 0.25rem;
-      content: "";
-      display: block;
-      background: #fff;
-      bottom: -2rem;
-      left: 0;
-    }
-    h2 {
-      font-size: 1.75rem;
-      margin: 1rem 0;
-    }
-    @media screen and (min-width: 768px) {
-      h2 { font-size: 2.25rem; }
-    }
-    h2 a {
-      text-decoration: none;
-      display: inline-block;
-      position: relative;
-    }
-    h2 a:after {
-      position: absolute;
-      width: 0px;
-      height: 0.1875rem;
-      content: "";
-      display: block;
-      bottom: -0.0625rem;
-      left: 0;
-      transition: width 0.3s;
-      background: #fff;
-    }
+    h1 { font-size: 2rem; position: relative; margin: 0 0 5.5rem 0; }
+    @media screen and (min-width: 768px) { h1 { font-size: 2.625rem; } }
+    h1:after { position: absolute; width: 3.25rem; height: 0.25rem; content: ""; display: block; background: #fff; bottom: -2rem; left: 0; }
+    h2 { font-size: 1.75rem; margin: 1rem 0; }
+    @media screen and (min-width: 768px) { h2 { font-size: 2.25rem; } }
+    h2 a { text-decoration: none; display: inline-block; position: relative; }
+    h2 a:after { position: absolute; width: 0px; height: 0.1875rem; content: ""; display: block; bottom: -0.0625rem; left: 0; transition: width 0.3s; background: #fff; }
     h2 a:hover:after { width: 100%; }
-
-    .header {
-      display: none;
-      text-align: right;
-      line-height: 1rem;
-      padding: 3.5rem 2rem 3.25rem;
-    }
-    @media screen and (min-width: 768px) {
-      .header { display: block; padding: 3.5rem 3rem 3.25rem; }
-    }
-    .header a {
-      display: inline-block;
-      position: relative;
-      margin-left: 2.5rem;
-      color: #fff;
-      text-decoration: none;
-    }
-    .header a:before {
-      min-height: 1px;
-      position: absolute;
-      width: 1.25rem;
-      height: 0.0625rem;
-      content: "";
-      display: block;
-      top: .55rem;
-      left: -1.875rem;
-      background: #fff;
-    }
-    .header a:after {
-      position: absolute;
-      width: 0px;
-      height: 0.125rem;
-      content: "";
-      display: block;
-      bottom: -0.5rem;
-      left: 0;
-      transition: width 0.3s;
-      background: #fff;
-    }
+    .header { display: none; text-align: right; line-height: 1rem; padding: 3.5rem 2rem 3.25rem; }
+    @media screen and (min-width: 768px) { .header { display: block; padding: 3.5rem 3rem 3.25rem; } }
+    .header a { display: inline-block; position: relative; margin-left: 2.5rem; color: #fff; text-decoration: none; }
+    .header a:before { min-height: 1px; position: absolute; width: 1.25rem; height: 0.0625rem; content: ""; display: block; top: .55rem; left: -1.875rem; background: #fff; }
+    .header a:after { position: absolute; width: 0px; height: 0.125rem; content: ""; display: block; bottom: -0.5rem; left: 0; transition: width 0.3s; background: #fff; }
     .header a:hover:after { width: 100%; }
-
-    @media screen and (min-width: 768px) {
-      .body { display: table; width: 100%; }
-    }
-    .body__logo {
-      padding-top: 6.25rem;
-      text-align: center;
-    }
-    .body__logo img {
-      width: 4.125rem;
-      height: 4.125rem;
-    }
-    @media screen and (min-width: 768px) {
-      .body__logo {
-        display: table-cell;
-        vertical-align: top;
-        text-align: left;
-      }
-      .body__content {
-        display: table-cell;
-        vertical-align: top;
-        width: 48.125rem;
-        padding-left: 3rem;
-      }
-    }
+    @media screen and (min-width: 768px) { .body { display: table; width: 100%; } }
+    .body__logo { padding-top: 6.25rem; text-align: center; }
+    .body__logo img { width: 4.125rem; height: 4.125rem; }
+    @media screen and (min-width: 768px) { .body__logo { display: table-cell; vertical-align: top; text-align: left; } .body__content { display: table-cell; vertical-align: top; width: 48.125rem; padding-left: 3rem; } }
     .body__item { margin-top: 4.5rem; }
-    .body__subtitle {
-      font-weight: 500;
-      font-size: 0.8125rem;
-      letter-spacing: .25rem;
-    }
-
-    .footer {
-      position: relative;
-      padding-bottom: 2rem;
-    }
-    @media screen and (min-width: 768px) {
-      .footer {
-        margin-left: 1.875rem;
-        line-height: 1.2rem;
-      }
-      .footer:before {
-        min-height: 1px;
-        position: absolute;
-        width: 1.125rem;
-        height: 0.0625rem;
-        content: "";
-        display: block;
-        background: #fff;
-        left: -1.875rem;
-        top: .65rem;
-      }
-    }
-    .footer span {
-      display: block;
-      text-align: center;
-    }
-    @media screen and (min-width: 768px) {
-      .footer span { display: inline; }
-      .footer span + span:before { content: " - "; }
-    }
-    .footer a {
-      position: relative;
-      display: inline-block;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .footer a:after {
-      position: absolute;
-      width: 0px;
-      height: 0.125rem;
-      content: "";
-      display: block;
-      bottom: -0.4rem;
-      left: 0;
-      transition: width 0.3s;
-      background: #fff;
-    }
+    .body__subtitle { font-weight: 500; font-size: 0.8125rem; letter-spacing: .25rem; }
+    .footer { position: relative; padding-bottom: 2rem; }
+    @media screen and (min-width: 768px) { .footer { margin-left: 1.875rem; line-height: 1.2rem; } .footer:before { min-height: 1px; position: absolute; width: 1.125rem; height: 0.0625rem; content: ""; display: block; background: #fff; left: -1.875rem; top: .65rem; } }
+    .footer span { display: block; text-align: center; }
+    @media screen and (min-width: 768px) { .footer span { display: inline; } .footer span + span:before { content: " - "; } }
+    .footer a { position: relative; display: inline-block; text-decoration: none; transition: color 0.3s; }
+    .footer a:after { position: absolute; width: 0px; height: 0.125rem; content: ""; display: block; bottom: -0.4rem; left: 0; transition: width 0.3s; background: #fff; }
     .footer a:hover { color: #fff; }
     .footer a:hover:after { width: 100%; }
   </style>
@@ -233,7 +70,7 @@
 </head>
 <body>
 
-  <section class="header">napište mi <a href="/cdn-cgi/l/email-protection#543e353f2136143e3b2630353a3d303d277a372e"><span class="__cf_email__" data-cfemail="c3a9a2a8b6a183a9acb1a7a2adaaa7aab0eda0b9">[email&#160;protected]</span></a></section>
+  <section class="header">napište mi <a id="hdr-mail" href="#"> </a></section>
 
   <section>
     <div class="body">
@@ -247,15 +84,15 @@
         </div>
 
         <div class="body__item">
-          <div class="body__subtitle">S POTĚŠENÍM JSEM PRACOVAL PRO</div>
-          <h2>Air Bank, ČSOB, O2, DHL, ŠKODA, J&amp;T&nbsp;banka,
-            Česká&nbsp;spořitelna, Forbes<br>
-            <span>a další...</span>
+          <div class="body__subtitle">S POT&#283;&#352;EN&#205;M JSEM PRACOVAL PRO</div>
+          <h2>Air Bank, &#268;SOB, O2, DHL, &#352;KODA, J&amp;T&nbsp;banka,
+            &#268;esk&#225;&nbsp;spo&#345;itelna, Forbes<br>
+            <span>a dal&#353;&#237;...</span>
           </h2>
         </div>
 
         <div class="body__item">
-          <div class="body__subtitle">MOJE PRÁCE NALEZNETE</div>
+          <div class="body__subtitle">MOJE PR&#193;CE NALEZNETE</div>
           <h2><a href="http://dribbble.com/jrdns" target="_blank" rel="noopener">dribbble</a></h2>
         </div>
 
@@ -263,7 +100,7 @@
           <div class="footer">
             <span>jakub jordanidis</span>
             <span>praha</span>
-            <span><a href="/cdn-cgi/l/email-protection#dfb5beb4aabd9fb5b0adbbbeb1b6bbb6acf1bca5"><span class="__cf_email__" data-cfemail="e58f848e9087a58f8a9781848b8c818c96cb869f">[email&#160;protected]</span></a></span>
+            <span><a id="ftr-mail" href="#"> </a></span>
           </div>
         </div>
 
@@ -271,32 +108,39 @@
     </div>
   </section>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
+    (function() {
+      var u = 'jakub';
+      var d = 'jordanidis' + '.' + 'cz';
+      var e = u + '@' + d;
+      var h = document.getElementById('hdr-mail');
+      var f = document.getElementById('ftr-mail');
+      if (h) { h.href = 'mailto:' + e; h.textContent = e; }
+      if (f) { f.href = 'mailto:' + e; f.textContent = e; }
+    })();
+
     (function() {
       var baseFont = 16;
       var h = document.documentElement;
       var b = document.body;
-
-      function ratio() {
-        var wh = window.innerHeight;
-        var bh = b.offsetHeight * 1.05;
-        return wh / bh;
-      }
-
+      function ratio() { return window.innerHeight / (b.offsetHeight * 1.05); }
       function update() {
-        if (window.innerWidth <= 768) {
-          h.style.fontSize = '';
-          baseFont = 16;
-          return;
-        }
-
+        if (window.innerWidth <= 768) { h.style.fontSize = ''; baseFont = 16; return; }
         var r = ratio();
-
-        if (r >= 1 && r <= 1.05) {
-          return;
-        }
-
+        if (r >= 1 && r <= 1.05) return;
         baseFont = baseFont * r;
         h.style.fontSize = baseFont + 'px';
+        for (var i = 0; i < 8; i++) {
+          var r2 = ratio();
+          if (r2 >= 1 && r2 <= 1.05) break;
+          baseFont = baseFont * r2;
+          h.style.fontSize = baseFont + 'px';
+        }
+      }
+      window.addEventListener('resize', function() { baseFont = 16; h.style.fontSize = ''; update(); });
+      update();
+    })();
+  </script>
 
-        for (var i = 0;
+</body>
+</html>
