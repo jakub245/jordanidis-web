@@ -22,16 +22,71 @@
     html { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-size: 16px; }
     body { margin: 0; }
     img { border-style: none; }
-    body {
-      background-image: -webkit-linear-gradient(top left, #5547d2 0%, #5044bb 100%);
-      background-image: linear-gradient(to bottom right, #5547d2 0%, #5044bb 100%);
+    @keyframes blobMove {
+      0%   { transform: translate(0%, 0%) scale(1); }
+      25%  { transform: translate(60vw, 20vh) scale(1.15); }
+      50%  { transform: translate(40vw, 60vh) scale(0.9); }
+      75%  { transform: translate(10vw, 40vh) scale(1.1); }
+      100% { transform: translate(0%, 0%) scale(1); }
     }
-    html, body { width: 100%; font-family: "sofia-pro", sans-serif; color: #867ddd; }
+
+    body {
+      background-color: #2a2278;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* grain celoplošně */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.07;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* pohybující se radial blob */
+    body::after {
+      content: "";
+      position: fixed;
+      top: -20vh;
+      left: -20vw;
+      width: 70vw;
+      height: 70vw;
+      background: radial-gradient(circle, rgba(100, 80, 220, 0.55) 0%, rgba(70, 50, 180, 0.25) 45%, transparent 70%);
+      border-radius: 50%;
+      animation: blobMove 18s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
+      filter: blur(40px);
+    }
+
+    html, body { width: 100%; font-family: "sofia-pro", sans-serif; color: #a89ff0; }
     @media screen and (min-width: 769px) { html, body { min-height: 100%; } }
+
+    section, .header { position: relative; z-index: 3; }
     section { max-width: 79.125rem; padding: 0 2rem; margin: 0 auto; }
     @media screen and (min-width: 768px) { section { padding: 0 3rem; } }
-    h1, h2 { color: #fff; font-weight: 300; line-height: 1.4; }
-    h1 span, h2 span { color: #867ddd; }
+    h1, h2 {
+      color: #fff;
+      font-weight: 300;
+      line-height: 1.4;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 60%), linear-gradient(135deg, #ffffff 0%, #c8c0ff 50%, #ffffff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      transition: background-position 0.1s ease;
+    }
+
+    /* Odkazy uvnitř h2 musí mít vlastní barvu */
+    h2 a {
+      -webkit-text-fill-color: #fff;
+      color: #fff;
+    }
+    h1 span, h2 span { color: #a89ff0; }
     h1 { font-size: 2rem; position: relative; margin: 0 0 5.5rem 0; }
     @media screen and (min-width: 768px) { h1 { font-size: 2.625rem; } }
     h1:after { position: absolute; width: 3.25rem; height: 0.25rem; content: ""; display: block; background: #fff; bottom: -2rem; left: 0; }
@@ -49,7 +104,15 @@
     @media screen and (min-width: 768px) { .body { display: table; width: 100%; } }
     .body__logo { padding-top: 6.25rem; text-align: center; }
     .body__logo img { width: 4.125rem; height: 4.125rem; }
-    @media screen and (min-width: 768px) { .body__logo { display: table-cell; vertical-align: top; text-align: left; } .body__content { display: table-cell; vertical-align: top; width: 48.125rem; padding-left: 3rem; } }
+    @media screen and (min-width: 768px) {
+      .body__logo { display: table-cell; vertical-align: top; text-align: left; }
+      .body__content {
+        display: table-cell;
+        vertical-align: top;
+        width: 48.125rem;
+        padding-left: 3rem;
+      }
+    }
     .body__item { margin-top: 4.5rem; }
     .body__subtitle { font-weight: 500; font-size: 0.8125rem; letter-spacing: .25rem; }
     .footer { position: relative; padding-bottom: 2rem; }
@@ -109,6 +172,42 @@
       if (fm) { fm.href = 'mailto:' + e; fm.textContent = e; }
 
 
+    })();
+
+    // mouse shimmer efekt
+    (function() {
+      // shimmer jen na h1 a h2 span (ne na a tagy)
+      var headings = document.querySelectorAll('h1, h2');
+
+      // Zabal text v h2 do spanu pokud tam není odkaz
+      headings.forEach(function(el) {
+        if (el.tagName === 'H2' && el.querySelector('a')) {
+          // h2 s odkazem — shimmer vypneme, odkaz musí být klikatelný
+          el.style.webkitTextFillColor = '#fff';
+          el.style.backgroundImage = 'none';
+          el.style.backgroundClip = 'unset';
+          el.style.webkitBackgroundClip = 'unset';
+        }
+      });
+
+      var shimmerEls = document.querySelectorAll('h1, h2:not(:has(a))');
+
+      document.addEventListener('mousemove', function(e) {
+        shimmerEls.forEach(function(el) {
+          var rect = el.getBoundingClientRect();
+          var cx = ((e.clientX - rect.left) / rect.width) * 100;
+          var cy = ((e.clientY - rect.top) / rect.height) * 100;
+          el.style.backgroundImage =
+            'radial-gradient(circle at ' + cx + '% ' + cy + '%, rgba(255,255,255,0.9) 0%, rgba(220,210,255,0.6) 25%, rgba(180,165,255,0.3) 50%, transparent 70%), ' +
+            'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(200,192,255,0.8) 50%, rgba(255,255,255,0.95) 100%)';
+        });
+      });
+
+      document.addEventListener('mouseleave', function() {
+        shimmerEls.forEach(function(el) {
+          el.style.backgroundImage = '';
+        });
+      });
     })();
 
     // fluid font scaling
