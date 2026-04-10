@@ -46,9 +46,11 @@
     }
     html, body {
       width: 100%;
-      min-height: 100%;
       font-family: "sofia-pro", sans-serif;
       color: #867ddd;
+    }
+    @media screen and (min-width: 769px) {
+      html, body { min-height: 100%; }
     }
     section {
       max-width: 79.125rem;
@@ -231,7 +233,7 @@
 </head>
 <body>
 
-  <section class="header">napište mi <a href="mailto:jakub@jordanidis.cz">jakub@jordanidis.cz</a></section>
+  <section class="header">napište mi <a href="/cdn-cgi/l/email-protection#543e353f2136143e3b2630353a3d303d277a372e"><span class="__cf_email__" data-cfemail="c3a9a2a8b6a183a9acb1a7a2adaaa7aab0eda0b9">[email&#160;protected]</span></a></section>
 
   <section>
     <div class="body">
@@ -261,7 +263,7 @@
           <div class="footer">
             <span>jakub jordanidis</span>
             <span>praha</span>
-            <span><a href="mailto:jakub@jordanidis.cz">jakub@jordanidis.cz</a></span>
+            <span><a href="/cdn-cgi/l/email-protection#dfb5beb4aabd9fb5b0adbbbeb1b6bbb6acf1bca5"><span class="__cf_email__" data-cfemail="e58f848e9087a58f8a9781848b8c818c96cb869f">[email&#160;protected]</span></a></span>
           </div>
         </div>
 
@@ -269,7 +271,7 @@
     </div>
   </section>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     (function() {
       var baseFont = 16;
       var h = document.documentElement;
@@ -297,23 +299,4 @@
         baseFont = baseFont * r;
         h.style.fontSize = baseFont + 'px';
 
-        for (var i = 0; i < 8; i++) {
-          var r2 = ratio();
-          if (r2 >= 1 && r2 <= 1.05) break;
-          baseFont = baseFont * r2;
-          h.style.fontSize = baseFont + 'px';
-        }
-      }
-
-      window.addEventListener('resize', function() {
-        baseFont = 16;
-        h.style.fontSize = '';
-        update();
-      });
-
-      update();
-    })();
-  </script>
-
-</body>
-</html>
+        for (var i = 0;
