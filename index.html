@@ -91,7 +91,7 @@
     h2 a:hover:after { width: 100%; }
     .header { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.6875rem; line-height: 1.2; padding: 1.75rem 2rem; }
     @media screen and (min-width: 768px) { .header { flex-wrap: nowrap; justify-content: flex-end; padding: 3.5rem 9.5vw 3.25rem; } }
-    .header a { position: relative; color: #fff; text-decoration: none; font-size: 1.32rem; }
+    .header a { position: relative; color: #fff; text-decoration: none; font-size: 1.125rem; }
     .header a:after { position: absolute; width: 0px; height: 0.125rem; content: ""; display: block; bottom: -0.4rem; left: 0; transition: width 0.3s; background: #fff; }
     .header a:hover:after { width: 100%; }
     .header__sep { color: #fff; opacity: .45; font-size: 1.32rem; }
@@ -104,11 +104,12 @@
     }
     .body__item { margin-top: 4.5rem; }
     .body__subtitle { font-weight: 500; font-size: 1.06rem; letter-spacing: 0.33rem; color: #a89ff0; }
-    .footer { position: relative; padding-bottom: 2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem; }
-    @media screen and (min-width: 768px) { .footer { justify-content: flex-start; } }
-    .status { display: inline-flex; align-items: center; gap: 0.5625rem; background: rgba(255,255,255,0.07); border-radius: 150px; padding: 0.75rem 1rem; }
-    .status__dot { width: 0.95rem; height: 0.95rem; border-radius: 50%; background: #35B457; flex-shrink: 0; animation: statusPulse 2s ease-in-out infinite; }
-    .status__label { color: #fff; font-size: 1.32rem; line-height: 1.2; }
+    .body__item--badge { margin-top: 1.5rem; }
+    .status-row { display: flex; justify-content: center; }
+    @media screen and (min-width: 768px) { .status-row { justify-content: flex-start; } }
+    .status { display: inline-flex; align-items: center; gap: 0.5625rem; background: rgba(255,255,255,0.07); border-radius: 150px; padding: 0.7rem 1rem; }
+    .status__dot { width: 0.8rem; height: 0.8rem; border-radius: 50%; background: #35B457; flex-shrink: 0; animation: statusPulse 2s ease-in-out infinite; }
+    .status__label { color: #fff; font-size: 1.125rem; line-height: 1.2; }
     @keyframes statusPulse {
       0%   { box-shadow: 0 0 0 0 rgba(53, 180, 87, 0.55); }
       70%  { box-shadow: 0 0 0 0.6rem rgba(53, 180, 87, 0); }
@@ -124,7 +125,6 @@
       .header a, .header__sep, .status__label { font-size: 1rem; }
       .body__item { margin-top: 2.75rem; }
       .body__logo { padding-top: 2.25rem; }
-      .footer { gap: 0.75rem; }
     }
   </style>
 </head>
@@ -143,6 +143,14 @@
         <div class="body__item">
           <h1>Visual, brand &amp; user experience<br><span class="light">designer s vášní k AI</span>.</h1>
         </div>
+        <div class="body__item body__item--badge">
+          <div class="status-row">
+            <span class="status">
+              <span class="status__dot"></span>
+              <span class="status__label">Přijímám nové zakázky</span>
+            </span>
+          </div>
+        </div>
         <div class="body__item">
           <div class="body__subtitle">S POTĚŠENÍM JSEM PRACOVAL PRO</div>
           <h2>Air Bank, ČSOB, O2, Labonetta, Specion,<br>Eliterro, Forbes, ŠKODA<br>
@@ -152,14 +160,6 @@
         <div class="body__item">
           <div class="body__subtitle">MOJE PRÁCE NAJDETE NA</div>
           <h2><a href="http://dribbble.com/jrdns" target="_blank" rel="noopener">dribbble</a></h2>
-        </div>
-        <div class="body__item">
-          <div class="footer">
-            <span class="status">
-              <span class="status__dot"></span>
-              <span class="status__label">Přijímám nové zakázky</span>
-            </span>
-          </div>
         </div>
       </div>
     </div>
