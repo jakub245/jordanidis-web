@@ -61,7 +61,7 @@
     @media screen and (max-width: 768px) { html, body { min-height: unset; height: auto; } }
 
     section, .header { position: relative; z-index: 3; }
-    section { max-width: 99rem; padding: 0 2rem; margin: 0 auto; }
+    section { max-width: 91rem; padding: 0 2rem; margin: 0 auto; }
     @media screen and (min-width: 768px) { section { padding: 0 3rem; } }
     h1, h2 {
       color: #fff;
@@ -103,7 +103,7 @@
       .body__content {
         display: table-cell;
         vertical-align: top;
-        width: 65rem;
+        width: 64rem;
         padding-left: 3rem;
       }
     }
@@ -111,7 +111,7 @@
     .body__subtitle { font-weight: 500; font-size: 1.06rem; letter-spacing: 0.33rem; color: #a89ff0; }
     .footer { position: relative; padding-bottom: 2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem; }
     @media screen and (min-width: 768px) { .footer { justify-content: flex-start; } }
-    .status { display: inline-flex; align-items: center; gap: 0.5625rem; background: rgba(255,255,255,0.05); border-radius: 150px; padding: 0.75rem 1rem; }
+    .status { display: inline-flex; align-items: center; gap: 0.5625rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 8px 24px rgba(0,0,0,0.12); border-radius: 150px; padding: 0.75rem 1rem; }
     .status__dot { width: 0.95rem; height: 0.95rem; border-radius: 50%; background: #35B457; flex-shrink: 0; animation: statusPulse 2s ease-in-out infinite; }
     .status__label { color: #fff; font-size: 1.32rem; line-height: 1.2; }
     .footer__divider { width: 1.48rem; height: 0.082rem; background: #fff; flex-shrink: 0; }
@@ -120,6 +120,18 @@
       0%   { box-shadow: 0 0 0 0 rgba(53, 180, 87, 0.55); }
       70%  { box-shadow: 0 0 0 0.6rem rgba(53, 180, 87, 0); }
       100% { box-shadow: 0 0 0 0 rgba(53, 180, 87, 0); }
+    }
+
+    /* mobil — menší typografie a utaženější mezery */
+    @media screen and (max-width: 768px) {
+      h1 { font-size: 1.5rem; margin-bottom: 1rem; }
+      h2 { font-size: 1.25rem; }
+      .logo-pill { font-size: 1.15rem; padding: 0.85rem 1.5rem; border-width: 3px; }
+      .body__subtitle { font-size: 0.78rem; letter-spacing: 0.22rem; }
+      .header a, .header__sep, .status__label, .footer__name { font-size: 1rem; }
+      .body__item { margin-top: 2.75rem; }
+      .body__logo { padding-top: 2.25rem; }
+      .footer { gap: 0.75rem; }
     }
   </style>
 </head>
@@ -210,26 +222,24 @@
       });
     })();
 
-    // fluid font scaling
+    // fluid font scaling — pouze zmenšuje na nízkých oknech, NIKDY nezvětšuje nad základní 16px
     (function() {
-      var baseFont = 16;
       var h = document.documentElement;
       var b = document.body;
       function ratio() { return window.innerHeight / (b.offsetHeight * 1.05); }
       function update() {
-        if (window.innerWidth <= 768) { h.style.fontSize = ''; baseFont = 16; return; }
-        var r = ratio();
-        if (r >= 1 && r <= 1.05) return;
-        baseFont = baseFont * r;
-        h.style.fontSize = baseFont + 'px';
-        for (var i = 0; i < 8; i++) {
-          var r2 = ratio();
-          if (r2 >= 1 && r2 <= 1.05) break;
-          baseFont = baseFont * r2;
-          h.style.fontSize = baseFont + 'px';
+        h.style.fontSize = '';
+        if (window.innerWidth <= 768) { return; }
+        if (ratio() >= 1) { return; } // obsah se vejde — drž návrhovou velikost
+        var bf = 16;
+        for (var i = 0; i < 10; i++) {
+          var r = ratio();
+          if (r >= 1) break;
+          bf = bf * r;
+          h.style.fontSize = bf + 'px';
         }
       }
-      window.addEventListener('resize', function() { baseFont = 16; h.style.fontSize = ''; update(); });
+      window.addEventListener('resize', update);
       update();
     })();
   </script>
