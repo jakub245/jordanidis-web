@@ -37,7 +37,7 @@
     body {
       background-color: #235333;
       position: relative;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
 
     /* pohybující se radial blob */
@@ -62,7 +62,7 @@
 
     section, .header { position: relative; z-index: 3; }
     section { max-width: 122rem; padding: 0 1.5rem; margin: 0 auto; }
-    @media screen and (min-width: 768px) { section { padding: 0 9.5vw 0 11.8vw; } }
+    @media screen and (min-width: 768px) { section { padding: 0 5vw 0 6vw; } }
     h1, h2 {
       color: #fff;
       font-family: "Unbounded", "sofia-pro", sans-serif;
@@ -90,23 +90,23 @@
     h2 a:after { position: absolute; width: 0px; height: 0.1875rem; content: ""; display: block; bottom: -0.0625rem; left: 0; transition: width 0.3s; background: #fff; }
     h2 a:hover:after { width: 100%; }
     .header { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.6875rem; line-height: 1.2; padding: 1.75rem 2rem; }
-    @media screen and (min-width: 768px) { .header { flex-wrap: nowrap; justify-content: flex-end; padding: 3.5rem 9.5vw 3.25rem; } }
+    @media screen and (min-width: 768px) { .header { flex-wrap: nowrap; justify-content: flex-end; padding: 3.5rem 5vw 3.25rem; } }
     .header a { position: relative; color: #fff; text-decoration: none; font-size: 1.125rem; }
     .header a:after { position: absolute; width: 0px; height: 0.125rem; content: ""; display: block; bottom: -0.4rem; left: 0; transition: width 0.3s; background: #fff; }
     .header a:hover:after { width: 100%; }
     .header__sep { color: #fff; opacity: .45; font-size: 1.32rem; }
-    @media screen and (min-width: 768px) { .body { display: flex; width: 100%; justify-content: space-between; align-items: flex-start; gap: 4rem; } }
+    @media screen and (min-width: 768px) { .body { display: flex; width: 100%; justify-content: space-between; align-items: flex-start; gap: 3rem; } }
     .body__logo { padding-top: 4.5rem; text-align: left; }
     .logo-pill { display: inline-block; border: 4px solid #fff; border-radius: 5.5rem; padding: 1.5rem 2.5rem; font-family: "Unbounded", "sofia-pro", sans-serif; font-weight: 400; font-size: 1.5rem; line-height: 1.3; color: #fff; }
     @media screen and (min-width: 768px) {
       .body__logo { text-align: left; flex: 0 0 auto; }
-      .body__content { flex: 0 1 62rem; max-width: 62rem; }
+      .body__content { flex: 0 1 72rem; max-width: 72rem; }
     }
     .body__item { margin-top: 4.5rem; }
     .body__subtitle { font-weight: 500; font-size: 1.06rem; letter-spacing: 0.33rem; color: #A9CE9C; }
     .body__item--lead { margin-top: 2rem; }
     .body__item--badge { margin-top: 2rem; }
-    .lead { margin: 0; max-width: 56rem; font-family: "Unbounded", "sofia-pro", sans-serif; font-weight: 300; font-size: 1.4rem; line-height: 1.5; color: #b7d7c1; }
+    .lead { margin: 0; max-width: 60rem; font-family: "Unbounded", "sofia-pro", sans-serif; font-weight: 300; font-size: 1.4rem; line-height: 1.5; color: #b7d7c1; }
     .lead strong { font-weight: 500; color: #fff; }
     .status-row { display: flex; justify-content: flex-start; }
     .status { display: inline-flex; align-items: center; gap: 0.5625rem; background: rgba(255,255,255,0.07); border-radius: 150px; padding: 0.7rem 1rem; }
@@ -127,6 +127,7 @@
       .lead { font-size: 1.05rem; }
       .header a, .header__sep, .status__label { font-size: 1rem; }
       .body__item { margin-top: 2.75rem; }
+      .body__item--lead { margin-top: 0.85rem; }
       .body__logo { padding-top: 2.25rem; }
     }
   </style>
