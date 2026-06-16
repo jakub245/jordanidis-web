@@ -18,7 +18,7 @@
   <script>try{Typekit.load({ async: true });}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { -webkit-box-sizing: border-box; box-sizing: border-box; }
     a { color: inherit; background-color: transparent; }
@@ -104,7 +104,10 @@
     }
     .body__item { margin-top: 4.5rem; }
     .body__subtitle { font-weight: 500; font-size: 1.06rem; letter-spacing: 0.33rem; color: #A9CE9C; }
-    .body__item--badge { margin-top: 1.5rem; }
+    .body__item--lead { margin-top: 2rem; }
+    .body__item--badge { margin-top: 2rem; }
+    .lead { margin: 0; max-width: 56rem; font-family: "Unbounded", "sofia-pro", sans-serif; font-weight: 300; font-size: 1.4rem; line-height: 1.5; color: #b7d7c1; }
+    .lead strong { font-weight: 500; color: #fff; }
     .status-row { display: flex; justify-content: flex-start; }
     .status { display: inline-flex; align-items: center; gap: 0.5625rem; background: rgba(255,255,255,0.07); border-radius: 150px; padding: 0.7rem 1rem; }
     .status__dot { width: 0.8rem; height: 0.8rem; border-radius: 50%; background: #35B457; flex-shrink: 0; animation: statusPulse 2s ease-in-out infinite; }
@@ -121,6 +124,7 @@
       h2 { font-size: 1.25rem; }
       .logo-pill { font-size: 1.15rem; padding: 0.85rem 1.5rem; border-width: 3px; }
       .body__subtitle { font-size: 0.78rem; letter-spacing: 0.22rem; }
+      .lead { font-size: 1.05rem; }
       .header a, .header__sep, .status__label { font-size: 1rem; }
       .body__item { margin-top: 2.75rem; }
       .body__logo { padding-top: 2.25rem; }
@@ -136,11 +140,14 @@
   <section>
     <div class="body">
       <div class="body__logo">
-        <span class="logo-pill">Jordanidis.</span>
+        <span class="logo-pill">Jakub Jordanidis.</span>
       </div>
       <div class="body__content">
         <div class="body__item">
-          <h1>Visual, brand &amp; user experience<br><span class="light">designer s vášní k AI</span>.</h1>
+          <h1>Jsem designer, stratég<br>a konzultant.</h1>
+        </div>
+        <div class="body__item body__item--lead">
+          <p class="lead">Nejvíc mě ale asi vystihuje, že rád pozoruju. Lidi, značky, prostředí i detaily, které často rozhodují o tom, jestli věc jen dobře vypadá, <strong>nebo opravdu funguje</strong>.</p>
         </div>
         <div class="body__item body__item--badge">
           <div class="status-row">
@@ -152,7 +159,7 @@
         </div>
         <div class="body__item">
           <div class="body__subtitle">S POTĚŠENÍM JSEM PRACOVAL PRO</div>
-          <h2>Air Bank, ČSOB, O2, Labonetta, Specion,<br>Eliterro, Forbes, ŠKODA<br>
+          <h2>Air Bank, ČSOB, O2, Labonetta, EMERGE,<br>Specion, Eliterro, Forbes, ŠKODA<br>
             <span>a další...</span>
           </h2>
         </div>
