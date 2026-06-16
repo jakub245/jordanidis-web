@@ -68,7 +68,7 @@
       font-family: "Unbounded", "sofia-pro", sans-serif;
       font-weight: 300;
       line-height: 1.4;
-      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 60%), linear-gradient(135deg, #ffffff 0%, #c8c0ff 50%, #ffffff 100%);
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 60%), linear-gradient(135deg, #ffffff 0%, #b4d6a0 50%, #ffffff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -96,7 +96,7 @@
     .header a:hover:after { width: 100%; }
     .header__sep { color: #fff; opacity: .45; font-size: 1.32rem; }
     @media screen and (min-width: 768px) { .body { display: flex; width: 100%; justify-content: space-between; align-items: flex-start; gap: 4rem; } }
-    .body__logo { padding-top: 4.5rem; text-align: center; }
+    .body__logo { padding-top: 4.5rem; text-align: left; }
     .logo-pill { display: inline-block; border: 4px solid #fff; border-radius: 5.5rem; padding: 1.5rem 2.5rem; font-family: "Unbounded", "sofia-pro", sans-serif; font-weight: 400; font-size: 1.5rem; line-height: 1.3; color: #fff; }
     @media screen and (min-width: 768px) {
       .body__logo { text-align: left; flex: 0 0 auto; }
@@ -105,8 +105,7 @@
     .body__item { margin-top: 4.5rem; }
     .body__subtitle { font-weight: 500; font-size: 1.06rem; letter-spacing: 0.33rem; color: #A9CE9C; }
     .body__item--badge { margin-top: 1.5rem; }
-    .status-row { display: flex; justify-content: center; }
-    @media screen and (min-width: 768px) { .status-row { justify-content: flex-start; } }
+    .status-row { display: flex; justify-content: flex-start; }
     .status { display: inline-flex; align-items: center; gap: 0.5625rem; background: rgba(255,255,255,0.07); border-radius: 150px; padding: 0.7rem 1rem; }
     .status__dot { width: 0.8rem; height: 0.8rem; border-radius: 50%; background: #35B457; flex-shrink: 0; animation: statusPulse 2s ease-in-out infinite; }
     .status__label { color: #fff; font-size: 1.125rem; line-height: 1.2; }
@@ -201,8 +200,8 @@
           var cx = ((e.clientX - rect.left) / rect.width) * 100;
           var cy = ((e.clientY - rect.top) / rect.height) * 100;
           el.style.backgroundImage =
-            'radial-gradient(circle at ' + cx + '% ' + cy + '%, rgba(255,255,255,0.9) 0%, rgba(220,210,255,0.6) 25%, rgba(180,165,255,0.3) 50%, transparent 70%), ' +
-            'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(200,192,255,0.8) 50%, rgba(255,255,255,0.95) 100%)';
+            'radial-gradient(circle at ' + cx + '% ' + cy + '%, rgba(255,255,255,0.9) 0%, rgba(205,230,190,0.6) 25%, rgba(150,200,135,0.35) 50%, transparent 70%), ' +
+            'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(180,214,160,0.8) 50%, rgba(255,255,255,0.95) 100%)';
         });
       });
 
