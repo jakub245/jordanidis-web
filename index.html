@@ -1,247 +1,787 @@
-<!DOCTYPE html>
-<html lang="cs">
+<!doctype html>
+<html lang="cs" class="no-js">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Jakub Jordanidis - designer, stratég a konzultant</title>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="index,follow" />
-  <meta name="author" content="Jordanidis">
-  <meta name="description" content="Jakub Jordanidis - Visual &amp; user experience designer">
-  <meta property="og:title" content="Jakub Jordanidis - Visual &amp; user experience designer">
-  <meta property="og:url" content="https://jordanidis.cz">
-  <meta property="og:site_name" content="Jakub Jordanidis">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="Jakub Jordanidis">
+  <meta name="description" content="Jakub Jordanidis, designer, stratég a konzultant. Pozoruju lidi, značky i detaily, které rozhodují o tom, jestli věc jen dobře vypadá, nebo opravdu funguje.">
+  <meta name="theme-color" content="#0c1d14">
+  <link rel="canonical" href="https://jordanidis.cz/">
   <meta property="og:type" content="website">
-  <meta property="og:description" content="webdesign, tvorba webovych stranek, ux design">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23235333' stroke='%23ffffff' stroke-width='3'/%3E%3Ctext x='50' y='58' font-family='Georgia%2C serif' font-size='20' fill='%23ffffff' text-anchor='middle'%3Ejrdns.%3C/text%3E%3C/svg%3E">
+  <meta property="og:site_name" content="Jakub Jordanidis">
+  <meta property="og:title" content="Jakub Jordanidis - designer, stratég a konzultant">
+  <meta property="og:description" content="Pozoruju lidi, značky i detaily, které rozhodují o tom, jestli věc jen dobře vypadá, nebo opravdu funguje.">
+  <meta property="og:url" content="https://jordanidis.cz/">
+  <meta property="og:locale" content="cs_CZ">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='47' fill='%230c1d14' stroke='%23b4d6a0' stroke-width='4'/%3E%3Ctext x='50' y='58' font-family='Georgia%2C serif' font-size='20' fill='%23eef3e8' text-anchor='middle'%3Ejrdns.%3C/text%3E%3C/svg%3E">
   <script src="https://use.typekit.net/dug1efj.js"></script>
   <script>try{Typekit.load({ async: true });}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { -webkit-box-sizing: border-box; box-sizing: border-box; }
-    a { color: inherit; background-color: transparent; }
-    a:active, a:hover { outline-width: 0; }
-    html { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-size: 16px; }
-    body { margin: 0; }
-    img { border-style: none; }
-    @keyframes blobMove {
-      0%   { transform: translate(0%, 0%) scale(1); }
-      25%  { transform: translate(60vw, 20vh) scale(1.15); }
-      50%  { transform: translate(40vw, 60vh) scale(0.9); }
-      75%  { transform: translate(10vw, 40vh) scale(1.1); }
-      100% { transform: translate(0%, 0%) scale(1); }
+    /* ==========================================================================
+       Jakub Jordanidis — osobní web
+       Písma z původního webu: Unbounded (nadpisy) a Sofia Pro (text).
+       Rukopis sdílený se studiem Eliathos: popisky, zrno, světlo za myší, kurzor,
+       tlačítka a linky. Barvy vlastní: lahvová zelená a šalvěj.
+       ========================================================================== */
+
+    /* ---------- Tokeny ---------- */
+    :root {
+      --bg: #0c1d14;
+      --bg-deep: #08140d;
+      --glass: rgba(18, 40, 27, .72);
+      --text: #eef3e8;
+      --text-muted: #a9b9a3;
+      --text-dim: #869981;
+      --line: rgba(180, 214, 160, .14);
+      --line-strong: rgba(180, 214, 160, .30);
+      --line-field: #6e8a69;   /* okraj ovládacích prvků: kontrast 3:1 */
+
+      --acc-300: #dcedd0;
+      --acc-400: #b4d6a0;      /* šalvěj z původního webu */
+      --acc-500: #8fc07d;
+      --acc-700: #3f6b46;
+      --acc-end: #6aa987;      /* konec přechodu v nadpisu */
+      --acc-ink: #0a170f;      /* text na tlačítku */
+
+      --glow-1: rgba(53, 120, 75, .30);   /* lahvová #235333, zesvětlená */
+      --glow-2: rgba(180, 214, 160, .07);
+
+      --font-display: "Unbounded", "sofia-pro", sans-serif;
+      --font-body: "sofia-pro", ui-sans-serif, system-ui, sans-serif;
+
+      --gutter: clamp(20px, 4.2vw, 72px);
+      --max: 1680px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --header-h: 84px;
+
+      /* pozice myši (nastavuje JS), výchozí střed */
+      --mx: 50vw;
+      --my: 40vh;
     }
 
+    /* ---------- Základ ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
-      background-color: #235333;
-      position: relative;
+      margin: 0;
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
       overflow-x: clip;
     }
+    a { color: inherit; text-decoration: none; }
+    svg { display: block; max-width: 100%; }
+    ::selection { background: var(--acc-400); color: var(--acc-ink); }
+    :focus-visible { outline: 2px solid var(--acc-400); outline-offset: 4px; border-radius: 6px; }
 
-    /* pohybující se radial blob */
-    body::after {
-      content: "";
-      position: fixed;
-      top: -20vh;
-      left: -20vw;
-      width: 70vw;
-      height: 70vw;
-      background: radial-gradient(circle, rgba(45, 98, 49, 0.9) 0%, rgba(45, 98, 49, 0.35) 45%, transparent 70%);
+    .wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+    .caps {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 12.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    /* ---------- Atmosféra: zrno + světlo za myší ---------- */
+    .grain {
+      position: fixed; inset: -50%; z-index: 90; pointer-events: none;
+      opacity: .07;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .spotlight {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(520px circle at var(--mx) var(--my), var(--glow-1), transparent 62%),
+        radial-gradient(1100px circle at var(--mx) var(--my), var(--glow-2), transparent 70%);
+    }
+
+    .cursor {
+      position: fixed; left: 0; top: 0; z-index: 95; pointer-events: none;
+      width: 34px; height: 34px; margin: -17px 0 0 -17px;
+      border: 1px solid color-mix(in srgb, var(--acc-400) 55%, transparent);
       border-radius: 50%;
-      animation: blobMove 18s ease-in-out infinite;
+      opacity: 0;
+      transition: width .35s var(--ease), height .35s var(--ease), margin .35s var(--ease), opacity .3s, background-color .35s, border-color .35s;
+      will-change: transform;
+    }
+    .cursor.is-visible { opacity: 1; }
+    .cursor.is-hover {
+      width: 64px; height: 64px; margin: -32px 0 0 -32px;
+      background-color: color-mix(in srgb, var(--acc-500) 10%, transparent);
+      border-color: color-mix(in srgb, var(--acc-400) 80%, transparent);
+    }
+    @media (hover: none), (pointer: coarse) { .cursor { display: none; } }
+
+    .site-header, .hero, .refs, .site-footer { position: relative; z-index: 1; }
+
+    /* ---------- Hlavička ---------- */
+    .site-header {
+      height: var(--header-h);
+      display: flex; align-items: center; gap: 32px;
+      padding-top: 12px;
+    }
+    .logo-pill {
+      display: inline-flex; align-items: center;
+      height: 46px; padding: 0 20px;
+      border: 1.5px solid var(--acc-400);
+      border-radius: 999px;
+      font-family: var(--font-display); font-weight: 400;
+      font-size: 16px;
+      color: var(--text);
+      transition: background-color .3s, color .3s;
+    }
+    .logo-pill:hover { background: var(--acc-400); color: var(--acc-ink); }
+    .nav { display: flex; gap: 6px; margin-left: auto; }
+    .nav a {
+      padding: 8px 14px;
+      font-size: 16px; color: var(--text-muted);
+      border-radius: 999px;
+      transition: color .25s, background-color .25s;
+    }
+    .nav a:hover { color: var(--text); background: color-mix(in srgb, var(--text) 5%, transparent); }
+
+    /* ---------- Tlačítka ---------- */
+    .btn {
+      position: relative; overflow: hidden;
+      display: inline-flex; align-items: center; gap: 12px;
+      height: 52px; padding: 0 26px;
+      border-radius: 999px;
+      background: var(--acc-400); color: var(--acc-ink);
+      font-weight: 500; font-size: 17px; letter-spacing: .005em;
+      transition: box-shadow .4s var(--ease);
+      isolation: isolate;
+      white-space: nowrap;
+    }
+    .btn::before {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background: radial-gradient(120px circle at var(--bx, 50%) var(--by, 50%), rgba(255, 255, 255, .35), transparent 70%);
+      opacity: 0; transition: opacity .3s;
+    }
+    .btn:hover::before { opacity: 1; }
+    .btn:hover { box-shadow: 0 10px 40px -10px color-mix(in srgb, var(--acc-500) 55%, transparent); }
+    .btn .arrow { transition: transform .35s var(--ease); }
+    .btn:hover .arrow { transform: translateX(4px); }
+    [data-magnetic] { will-change: transform; transition: transform .5s var(--ease); }
+
+    /* Textový odkaz: v klidu jemná linka, při najetí barevná, která se vlní za myší (JS) */
+    .link-wave {
+      --lw-inset: 6px;
+      position: relative;
+      display: inline-flex; align-items: center;
+      height: 52px; padding: 0 var(--lw-inset);
+      color: var(--text-muted);
+      font-weight: 400; font-size: 17px; letter-spacing: .005em;
+      white-space: nowrap;
+      transition: color .3s;
+    }
+    .link-wave::after,
+    .link-wave-line { position: absolute; left: var(--lw-inset); right: var(--lw-inset); top: calc(50% + .9em); }
+    .link-wave::after { content: ""; height: 1px; background: var(--line-strong); transition: opacity .3s; }
+    .link-wave-line {
+      height: 12px; margin-top: -6px;
+      transform: scaleX(0); transform-origin: right;
+      transition: transform .55s var(--ease);
       pointer-events: none;
-      z-index: 1;
-      filter: blur(40px);
+    }
+    .link-wave-line svg { width: 100%; height: 100%; overflow: visible; }
+    .link-wave-line path { fill: none; stroke: var(--acc-400); stroke-width: 1.5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+    .link-wave:hover, .link-wave:focus-visible { color: var(--text); }
+    .link-wave:hover::after, .link-wave:focus-visible::after { opacity: 0; }
+    .link-wave:hover .link-wave-line, .link-wave:focus-visible .link-wave-line { transform: none; transform-origin: left; }
+
+    /* ---------- Hero ---------- */
+    .hero { flex: 1; display: flex; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 4vw;
+      padding-block: clamp(32px, 5vh, 72px);
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      margin: 0 0 28px;
+      color: var(--acc-400);
+    }
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--acc-400);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--acc-400) 55%, transparent); }
+      70%  { box-shadow: 0 0 0 9px transparent; }
+      100% { box-shadow: 0 0 0 0 transparent; }
+    }
+    .display {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(34px, min(5vw, 8.5vh), 84px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .display .line { display: block; overflow: hidden; padding-bottom: .12em; margin-bottom: -.06em; }
+    .display .line > span { display: inline-block; transform: translateY(105%); animation: rise 1.1s var(--ease) forwards; }
+    .display .line:nth-child(2) > span { animation-delay: .1s; }
+    .display .line:nth-child(3) > span { animation-delay: .2s; }
+    @keyframes rise { to { transform: translateY(0); } }
+    .accent {
+      --base: linear-gradient(100deg, var(--acc-300) 0%, var(--acc-500) 45%, var(--acc-end) 100%);
+      color: transparent;
+      background: var(--base);
+      -webkit-background-clip: text; background-clip: text;
+      /* Přechod se kreslí jen uvnitř rámečku textu. Záporné prostrkání posune tvar
+         posledního písmene mimo rámeček a přechod ho vpravo ořízne.
+         Rezerva do stran a dolů to řeší, záporný okraj ji vyrovná v rozložení. */
+      padding: 0 .08em .12em;
+      margin: 0 -.08em;
+      -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    }
+    /* Rozostření s glazurou: písmena nadpisu u kurzoru se rozmažou a prosvítí
+       šalvějí. JS nadpis rozdělí na písmena a každému nastaví --t (0–1). */
+    .split .word { display: inline-block; white-space: nowrap; }
+    .split .ch {
+      --t: 0;
+      display: inline-block;
+      color: color-mix(in srgb, var(--acc-300) calc(var(--t) * 100%), var(--text));
+      filter: blur(calc(var(--t) * 7px));
+      transform: scale(calc(1 + var(--t) * .08));
+    }
+    .split .accent { background: none; }
+    /* přechod slova se rozdělí mezi písmena, aby každé mohlo mít vlastní rozostření */
+    .split .accent .ch {
+      color: transparent;
+      background: var(--base);
+      background-size: var(--aw, 100%) 100%;
+      background-position: calc(var(--ao, 0px) * -1) 0;
+      -webkit-background-clip: text; background-clip: text;
+      filter: blur(calc(var(--t) * 7px)) brightness(calc(1 + var(--t) * .45));
+    }
+    .hero-lead {
+      max-width: 620px;
+      margin: 28px 0 0;
+      font-family: var(--font-display); font-weight: 300;
+      font-size: clamp(16px, 1.25vw, 19px);
+      color: var(--text-muted);
+      line-height: 1.65;
+      text-wrap: pretty;
+    }
+    .hero-lead strong { color: var(--text); font-weight: 500; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .fade-up { opacity: 0; transform: translateY(18px); animation: fadeUp 1s var(--ease) forwards; }
+    .d1 { animation-delay: .45s; } .d2 { animation-delay: .6s; } .d3 { animation-delay: .75s; }
+    @keyframes fadeUp { to { opacity: 1; transform: none; } }
+
+    /* Terč s pavoukem: tvar grafu se natáhne k oblasti, ke které se myš blíží */
+    .hero-visual {
+      position: relative;
+      aspect-ratio: 1;
+      max-height: 62vh;
+      justify-self: center;
+      width: 100%;
+      opacity: 0; animation: fadeUp 1.4s var(--ease) .3s forwards;
+    }
+    .halo {
+      position: absolute; inset: 14%;
+      border-radius: 50%;
+      background:
+        radial-gradient(closest-side, color-mix(in srgb, var(--acc-500) 18%, transparent), transparent 72%),
+        radial-gradient(closest-side at 60% 70%, var(--glow-1), transparent 80%);
+      filter: blur(10px);
+    }
+    .rings { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .rings .ring { fill: none; stroke: color-mix(in srgb, var(--acc-400) 22%, transparent); stroke-width: 1; vector-effect: non-scaling-stroke; }
+    .rings .ring--dash {
+      stroke-dasharray: 2 8;
+      transform-box: view-box; transform-origin: 300px 300px;
+      animation: spin 140s linear infinite;
+    }
+    .rings .flow {
+      fill: none; stroke: url(#lg-flow); stroke-width: 1.4; stroke-linecap: round;
+      stroke-dasharray: 150 1640.7;
+      animation: flow 18s linear infinite;
+    }
+    .rings .flow--inner { stroke-dasharray: 80 1208.1; opacity: .7; animation: flow-inner 26s linear infinite reverse; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes flow { to { stroke-dashoffset: -1790.7; } }
+    @keyframes flow-inner { to { stroke-dashoffset: -1288.1; } }
+    .rings .axis { stroke: color-mix(in srgb, var(--acc-400) 14%, transparent); stroke-width: 1; vector-effect: non-scaling-stroke; }
+    .rings .radar-area {
+      fill: url(#rg-radar);
+      stroke: var(--acc-400); stroke-width: 1.3; stroke-linejoin: round;
+      vector-effect: non-scaling-stroke;
+    }
+    .rings .radar-node { fill: var(--acc-300); }
+    .tag-float {
+      transform: translate(-50%, -50%);
+      position: absolute;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: var(--glass);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      color: var(--text);
+      white-space: nowrap;
+      transition: border-color .35s, color .35s, background-color .35s;
+    }
+    .tag-float i { width: 6px; height: 6px; border-radius: 50%; background: var(--acc-400); }
+    .tag-float.is-active {
+      border-color: var(--acc-400);
+      color: var(--acc-300);
+      background: color-mix(in srgb, var(--acc-700) 50%, var(--glass));
     }
 
-    html, body { width: 100%; font-family: "sofia-pro", sans-serif; color: #A9CE9C; }
-    @media screen and (min-width: 769px) { html, body { min-height: 100%; } }
-    @media screen and (max-width: 768px) { html, body { min-height: unset; height: auto; } }
-
-    section, .header { position: relative; z-index: 3; }
-    section { max-width: 122rem; padding: 0 1.5rem; margin: 0 auto; }
-    @media screen and (min-width: 768px) { section { padding: 0 5vw 0 6vw; } }
-    h1, h2 {
-      color: #fff;
-      font-family: "Unbounded", "sofia-pro", sans-serif;
-      font-weight: 300;
-      line-height: 1.4;
-      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 60%), linear-gradient(135deg, #ffffff 0%, #b4d6a0 50%, #ffffff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      background-size: 200% 200%;
-      transition: background-position 0.1s ease;
+    /* ---------- Reference: jména se vynoří z rozmazání, najetím se zaostří jedno ---------- */
+    .refs-row {
+      display: grid; grid-template-columns: auto minmax(0, 1fr);
+      gap: clamp(32px, 5vw, 96px); align-items: baseline;
+      padding-top: 26px;
+    }
+    .refs-label {
+      display: flex; align-items: center; gap: 12px;
+      margin: 0;
+      color: var(--text-dim);
+    }
+    .refs-list {
+      display: flex; flex-wrap: wrap; align-items: baseline;
+      gap: 8px clamp(22px, 2.4vw, 44px);
+      margin: 0; padding: 0; list-style: none;
+    }
+    .refs-list li {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(18px, 1.55vw, 26px); letter-spacing: -0.01em; line-height: 1.3;
+      color: var(--text);
+      white-space: nowrap;
+      transition: color .35s, opacity .35s;
+      animation: resolve 1s var(--ease) backwards;   /* po doběhnutí se vrátí k CSS, aby fungoval hover */
+      animation-delay: calc(.9s + var(--i, 0) * 80ms);
+    }
+    .refs-list li.more { color: var(--text-dim); }
+    .refs-list:hover li { opacity: .38; }
+    .refs-list li:hover { opacity: 1; color: var(--acc-300); }
+    @keyframes resolve {
+      from { opacity: 0; filter: blur(10px); transform: translateY(6px); }
+      to   { opacity: 1; filter: blur(0); transform: none; }
     }
 
-    /* Odkazy uvnitř h2 musí mít vlastní barvu */
-    h2 a {
-      -webkit-text-fill-color: #fff;
-      color: #fff;
+    /* ---------- Patička ---------- */
+    .site-footer {
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      padding-block: 22px 26px;
+      color: var(--text-dim);
     }
-    h1 .light { font-weight: 300; }
-    h1 { font-size: 1.85rem; font-weight: 400; position: relative; margin: 0 0 1.5rem 0; }
-    @media screen and (min-width: 768px) { h1 { font-size: 2.875rem; } }
-    h2 { font-size: 1.6rem; font-weight: 300; line-height: 1.5; margin: 1rem 0; }
-    @media screen and (min-width: 768px) { h2 { font-size: 2.625rem; } }
-    h2 a { text-decoration: none; display: inline-block; position: relative; }
-    h2 a:after { position: absolute; width: 0px; height: 0.1875rem; content: ""; display: block; bottom: -0.0625rem; left: 0; transition: width 0.3s; background: #fff; }
-    h2 a:hover:after { width: 100%; }
-    .header { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.6875rem; line-height: 1.2; padding: 1.75rem 2rem; }
-    @media screen and (min-width: 768px) { .header { flex-wrap: nowrap; justify-content: flex-end; padding: 3.5rem 5vw 3.25rem; } }
-    .header a { position: relative; color: #fff; text-decoration: none; font-size: 1.125rem; }
-    .header a:after { position: absolute; width: 0px; height: 0.125rem; content: ""; display: block; bottom: -0.4rem; left: 0; transition: width 0.3s; background: #fff; }
-    .header a:hover:after { width: 100%; }
-    .header__sep { color: #fff; opacity: .45; font-size: 1.32rem; }
-    @media screen and (min-width: 768px) { .body { display: flex; width: 100%; justify-content: space-between; align-items: flex-start; gap: 3rem; } }
-    .body__logo { padding-top: 4.5rem; text-align: left; }
-    .logo-pill { display: inline-block; border: 4px solid #fff; border-radius: 5.5rem; padding: 1.5rem 2.5rem; font-family: "Unbounded", "sofia-pro", sans-serif; font-weight: 400; font-size: 1.5rem; line-height: 1.3; color: #fff; }
-    @media screen and (min-width: 768px) {
-      .body__logo { text-align: left; flex: 0 0 auto; }
-      .body__content { flex: 0 1 72rem; max-width: 72rem; }
+    .site-footer a { text-transform: none; letter-spacing: .04em; padding-block: 12px; margin-block: -12px; transition: color .2s; }   /* větší plocha pro prst */
+    .site-footer a:hover { color: var(--acc-300); }
+
+    /* ---------- Responzivita ---------- */
+    @media (max-width: 900px) {
+      :root { --header-h: 72px; }
+      .site-header { gap: 12px; padding-top: 6px; }
+      .logo-pill { height: 40px; padding: 0 16px; font-size: 14px; }
+      .nav a { padding: 8px 10px; }
+      .nav .nav-mail { display: none; }
+      .hero { overflow-x: clip; }   /* oko přesahuje vpravo, nesmí rozšířit stránku */
+      .hero-grid { grid-template-columns: 1fr; position: relative; padding-block: 48px 56px; }
+      .hero-copy { position: relative; z-index: 1; }
+      /* oko zůstane jako jemné pozadí za nadpisem */
+      .hero-visual {
+        position: absolute; z-index: 0; pointer-events: none;
+        width: min(110vw, 560px); max-height: none;
+        right: calc(min(110vw, 560px) * -0.3); top: -4%;
+        animation-name: fadeUpDim;
+      }
+      .tag-float { display: none; }
+      .display { font-size: clamp(30px, min(8.6vw, 13vh), 56px); }
+      .refs-row { grid-template-columns: 1fr; gap: 16px; }
     }
-    .body__item { margin-top: 4.5rem; }
-    .body__subtitle { font-weight: 500; font-size: 1.06rem; letter-spacing: 0.33rem; color: #A9CE9C; }
-    .body__item--lead { margin-top: 2rem; }
-    .body__item--badge { margin-top: 2rem; }
-    .lead { margin: 0; max-width: 60rem; font-family: "Unbounded", "sofia-pro", sans-serif; font-weight: 300; font-size: 1.4rem; line-height: 1.5; color: #b4d6a0; }
-    .lead strong { font-weight: 500; color: #fff; }
-    .status-row { display: flex; justify-content: flex-start; }
-    .status { display: inline-flex; align-items: center; gap: 0.5625rem; background: rgba(255,255,255,0.07); border-radius: 150px; padding: 0.7rem 1rem; }
-    .status__dot { width: 0.8rem; height: 0.8rem; border-radius: 50%; background: #35B457; flex-shrink: 0; animation: statusPulse 2s ease-in-out infinite; }
-    .status__label { color: #fff; font-size: 1.125rem; line-height: 1.2; }
-    @keyframes statusPulse {
-      0%   { box-shadow: 0 0 0 0 rgba(53, 180, 87, 0.55); }
-      70%  { box-shadow: 0 0 0 0.6rem rgba(53, 180, 87, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(53, 180, 87, 0); }
+    /* nízké notebookové obrazovky (1280×720, 1366×768): vše na jednu obrazovku */
+    @media (min-width: 901px) and (max-height: 820px) {
+      .hero-grid { padding-block: 20px; }
+      .eyebrow { margin-bottom: 18px; }
+      .hero-lead { margin-top: 20px; }
+      .hero-cta { margin-top: 24px; }
+      .refs-row { padding-top: 16px; }
+      .site-footer { padding-block: 14px 18px; }
+    }
+    @keyframes fadeUpDim { from { opacity: 0; transform: translateY(18px); } to { opacity: .3; transform: none; } }
+    @media (max-width: 480px) {
+      .nav a:not(:first-child) { display: none; }
+      .site-footer { flex-direction: column; align-items: flex-start; gap: 6px; }
     }
 
-    /* mobil — menší typografie a utaženější mezery */
-    @media screen and (max-width: 768px) {
-      h1 { font-size: 1.5rem; margin-bottom: 1rem; }
-      h2 { font-size: 1.25rem; }
-      .logo-pill { font-size: 1.15rem; padding: 0.85rem 1.5rem; border-width: 3px; }
-      .body__subtitle { font-size: 0.78rem; letter-spacing: 0.22rem; }
-      .lead { font-size: 1.05rem; }
-      .header a, .header__sep, .status__label { font-size: 1rem; }
-      .body__item { margin-top: 2.75rem; }
-      .body__item--lead { margin-top: 0.85rem; }
-      .body__logo { padding-top: 2.25rem; }
-      .br-d { display: none; }
+    /* ---------- Omezení pohybu ---------- */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .display .line > span, .fade-up { transform: none; opacity: 1; }
+      .spotlight, .cursor { display: none; }
     }
   </style>
 </head>
 <body>
+  <div class="spotlight" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"></div>
 
-  <section class="header">
-    <a id="hdr-linkedin" href="https://www.linkedin.com/in/jakub-jordanidis-87a4922b/" target="_blank" rel="noopener">LinkedIn</a> <span class="header__sep">|</span> <a id="hdr-mail" href="#"> </a>
-  </section>
+  <header class="site-header wrap">
+    <a class="logo-pill" href="./" aria-label="Jakub Jordanidis, úvod">Jakub Jordanidis.</a>
+    <nav class="nav" aria-label="Odkazy">
+      <a href="https://www.linkedin.com/in/jakub-jordanidis-87a4922b/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://dribbble.com/jakubjordanidis" target="_blank" rel="noopener">Dribbble</a>
+      <a class="nav-mail" data-mail></a>
+    </nav>
+  </header>
 
-  <section>
-    <div class="body">
-      <div class="body__logo">
-        <span class="logo-pill">Jakub Jordanidis.</span>
-      </div>
-      <div class="body__content">
-        <div class="body__item">
-          <h1>Jsem designer, stratég<br>a konzultant.</h1>
-        </div>
-        <div class="body__item body__item--lead">
-          <p class="lead">Nejvíc mě ale vystihuje to, že rád pozoruju. Lidi, značky, prostředí i detaily, které často rozhodují o tom, jestli věc jen dobře vypadá, <strong>nebo opravdu funguje</strong>.</p>
-        </div>
-        <div class="body__item body__item--badge">
-          <div class="status-row">
-            <span class="status">
-              <span class="status__dot"></span>
-              <span class="status__label">Přijímám nové zakázky</span>
-            </span>
-          </div>
-        </div>
-        <div class="body__item">
-          <div class="body__subtitle">S POTĚŠENÍM JSEM PRACOVAL PRO</div>
-          <h2>Air Bank, ČSOB, O2, Labonetta, EMERGE, <br class="br-d">Specion, Eliterro, Forbes, ŠKODA <br class="br-d">
-            <span>a další...</span>
-          </h2>
-        </div>
-        <div class="body__item">
-          <div class="body__subtitle">MOJE PRÁCE NAJDETE NA</div>
-          <h2><a href="http://dribbble.com/jakubjordanidis" target="_blank" rel="noopener">dribbble</a></h2>
+  <main class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow caps fade-up"><span class="status-dot" aria-hidden="true"></span>Přijímám nové zakázky</p>
+        <h1 class="display" data-blur>
+          <span class="line"><span>Jsem designer,</span></span>
+          <span class="line"><span>stratég</span></span>
+          <span class="line"><span>a&nbsp;<span class="accent">konzultant.</span></span></span>
+        </h1>
+        <p class="hero-lead fade-up d1">
+          Nejvíc mě ale vystihuje to, že rád pozoruju. Lidi, značky, prostředí i&nbsp;detaily,
+          které často rozhodují o&nbsp;tom, jestli věc jen dobře vypadá, <strong>nebo opravdu funguje</strong>.
+        </p>
+        <div class="hero-cta fade-up d2">
+          <a class="btn" data-mail-href data-magnetic="0.25">
+            Napište mi
+            <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="link-wave" href="https://dribbble.com/jakubjordanidis" target="_blank" rel="noopener">Moje práce na Dribbble<span class="link-wave-line" aria-hidden="true"><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M0 6H100"/></svg></span></a>
         </div>
       </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="halo"></div>
+        <svg class="rings" viewBox="0 0 600 600">
+          <defs>
+            <linearGradient id="lg-flow" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" style="stop-color: var(--acc-300)"/><stop offset="1" style="stop-color: var(--acc-end)"/>
+            </linearGradient>
+            <radialGradient id="rg-radar" cx="300" cy="300" r="285" gradientUnits="userSpaceOnUse">
+              <stop offset="0" style="stop-color: var(--acc-400); stop-opacity: .02"/>
+              <stop offset="1" style="stop-color: var(--acc-400); stop-opacity: .14"/>
+            </radialGradient>
+          </defs>
+          <circle class="ring" cx="300" cy="300" r="285"/>
+          <circle class="ring ring--dash" cx="300" cy="300" r="205"/>
+          <circle class="ring" cx="300" cy="300" r="125"/>
+          <circle class="flow" cx="300" cy="300" r="285"/>
+          <circle class="flow flow--inner" cx="300" cy="300" r="205"/>
+          <!-- osy po 60°: Strategie, Branding, AI, Konzultace, UX/UI, Design -->
+          <g>
+            <line class="axis" x1="300" y1="300" x2="300" y2="15"/>
+            <line class="axis" x1="300" y1="300" x2="546.8" y2="157.5"/>
+            <line class="axis" x1="300" y1="300" x2="546.8" y2="442.5"/>
+            <line class="axis" x1="300" y1="300" x2="300" y2="585"/>
+            <line class="axis" x1="300" y1="300" x2="53.2" y2="442.5"/>
+            <line class="axis" x1="300" y1="300" x2="53.2" y2="157.5"/>
+          </g>
+          <polygon class="radar-area" points="300,123.3 423.4,228.8 438.2,379.8 300,488.1 176.6,371.3 156.8,217.4"/>
+          <g>
+            <circle class="radar-node" cx="300" cy="123.3" r="3.5"/>
+            <circle class="radar-node" cx="423.4" cy="228.8" r="3.5"/>
+            <circle class="radar-node" cx="438.2" cy="379.8" r="3.5"/>
+            <circle class="radar-node" cx="300" cy="488.1" r="3.5"/>
+            <circle class="radar-node" cx="176.6" cy="371.3" r="3.5"/>
+            <circle class="radar-node" cx="156.8" cy="217.4" r="3.5"/>
+          </g>
+        </svg>
+        <!-- štítky na koncích os, ve stejném pořadí jako osy -->
+        <span class="tag-float caps" style="left:50%;top:2.5%"><i></i>Strategie</span>
+        <span class="tag-float caps" style="left:91.1%;top:26.25%"><i></i>Branding</span>
+        <span class="tag-float caps" style="left:91.1%;top:73.75%"><i></i>AI</span>
+        <span class="tag-float caps" style="left:50%;top:97.5%"><i></i>Konzultace</span>
+        <span class="tag-float caps" style="left:8.9%;top:73.75%"><i></i>UX/UI</span>
+        <span class="tag-float caps" style="left:8.9%;top:26.25%"><i></i>Design</span>
+      </div>
+    </div>
+  </main>
+
+  <section class="refs" aria-labelledby="refs-title">
+    <div class="wrap refs-row">
+      <h2 class="refs-label caps fade-up d3" id="refs-title">S&nbsp;potěšením jsem pracoval pro</h2>
+      <ul class="refs-list">
+        <li style="--i:0">Air Bank</li>
+        <li style="--i:1">ČSOB</li>
+        <li style="--i:2">O2</li>
+        <li style="--i:3">Labonetta</li>
+        <li style="--i:4">EMERGE</li>
+        <li style="--i:5">Specion</li>
+        <li style="--i:6">Eliterro</li>
+        <li style="--i:7">Forbes</li>
+        <li style="--i:8">ŠKODA</li>
+        <li class="more" style="--i:9">a&nbsp;další…</li>
+      </ul>
     </div>
   </section>
 
+  <footer class="site-footer wrap caps">
+    <span>© <span data-year>2026</span> Jakub Jordanidis</span>
+    <a data-mail></a>
+  </footer>
+
   <script>
-    (function() {
-      // email
-      var u = 'jakub', d = 'jordanidis' + '.' + 'cz', e = u + '@' + d;
-      var hm = document.getElementById('hdr-mail');
-      var fm = document.getElementById('ftr-mail');
-      if (hm) { hm.href = 'mailto:' + e; hm.textContent = e; }
-      if (fm) { fm.href = 'mailto:' + e; fm.textContent = e; }
+    (() => {
+      const root = document.documentElement;
+      root.classList.remove('no-js');
 
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-    })();
+      /* ---------- E-mail (skládá se až v prohlížeči kvůli robotům) ---------- */
+      const mail = 'jakub' + '@' + 'jordanidis' + '.' + 'cz';
+      document.querySelectorAll('[data-mail]').forEach((el) => { el.href = 'mailto:' + mail; el.textContent = mail; });
+      document.querySelectorAll('[data-mail-href]').forEach((el) => { el.href = 'mailto:' + mail; });
 
-    // mouse shimmer efekt
-    (function() {
-      // shimmer jen na h1 a h2 span (ne na a tagy)
-      var headings = document.querySelectorAll('h1, h2');
+      /* ---------- Rok v patičce ---------- */
+      document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
-      // Zabal text v h2 do spanu pokud tam není odkaz
-      headings.forEach(function(el) {
-        if (el.tagName === 'H2' && el.querySelector('a')) {
-          // h2 s odkazem — shimmer vypneme, odkaz musí být klikatelný
-          el.style.webkitTextFillColor = '#fff';
-          el.style.backgroundImage = 'none';
-          el.style.backgroundClip = 'unset';
-          el.style.webkitBackgroundClip = 'unset';
-        }
-      });
+      if (finePointer && !reduceMotion) initPointerEffects();
 
-      var shimmerEls = document.querySelectorAll('h1, h2:not(:has(a))');
+      /* ======================================================================
+         Myš: světlo, kurzor, rozostření nadpisu, pavouk, magnetická tlačítka
+         ====================================================================== */
+      function initPointerEffects() {
+        const cursor = document.querySelector('.cursor');
+        const target = document.querySelector('.hero-visual');
+        const radar = initRadar();
+        const headline = document.querySelector('[data-blur]');
+        const letters = headline ? splitLetters(headline) : [];
+        const accent = headline && headline.querySelector('.accent');
+        const REACH = 150;   // dosah rozostření od kurzoru v px
+        let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+        let cx = mx, cy = my;
+        let inside = false;   // je kurzor v okně
+        let raf = null;
 
-      document.addEventListener('mousemove', function(e) {
-        shimmerEls.forEach(function(el) {
-          var rect = el.getBoundingClientRect();
-          var cx = ((e.clientX - rect.left) / rect.width) * 100;
-          var cy = ((e.clientY - rect.top) / rect.height) * 100;
-          el.style.backgroundImage =
-            'radial-gradient(circle at ' + cx + '% ' + cy + '%, rgba(255,255,255,0.9) 0%, rgba(205,230,190,0.6) 25%, rgba(150,200,135,0.35) 50%, transparent 70%), ' +
-            'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(180,214,160,0.8) 50%, rgba(255,255,255,0.95) 100%)';
+        // přechod slova „konzultant.“ rozložený na jednotlivá písmena
+        const measure = () => {
+          if (!accent) return;
+          accent.style.setProperty('--aw', `${accent.offsetWidth}px`);
+          accent.querySelectorAll('.ch').forEach((ch) => {
+            ch.style.setProperty('--ao', `${ch.offsetLeft - accent.offsetLeft}px`);
+          });
+        };
+        measure();
+
+        const tick = () => {
+          cx += (mx - cx) * 0.18;
+          cy += (my - cy) * 0.18;
+          let moving = Math.abs(mx - cx) > 0.3 || Math.abs(my - cy) > 0.3;
+
+          // rozostření: nejdřív všechna měření, potom zápisy
+          const centers = letters.map((l) => {
+            const r = l.el.getBoundingClientRect();
+            return [r.left + r.width / 2, r.top + r.height / 2];
+          });
+          letters.forEach((l, i) => {
+            const x = inside ? Math.max(0, 1 - Math.hypot(cx - centers[i][0], cy - centers[i][1]) / REACH) : 0;
+            const target = x * x * (3 - 2 * x);
+            l.t += (target - l.t) * 0.25;
+            if (Math.abs(target - l.t) > 0.004) moving = true; else l.t = target;
+            l.el.style.setProperty('--t', l.t.toFixed(3));
+          });
+
+          // pavouk: čím blíž je myš k terči, tím víc se tvar natáhne jejím směrem;
+          // úplně ve středu je směr nejistý, proto tam síla klesá
+          if (target && radar) {
+            const r = target.getBoundingClientRect();
+            const dx = mx - (r.left + r.width / 2);
+            const dy = my - (r.top + r.height / 2);
+            const dist = Math.hypot(dx, dy);
+            const near = Math.min(Math.max(1.4 - dist / (r.width * 0.7), 0.2), 1);
+            const center = Math.min(dist / (r.width * 0.1), 1);
+            if (radar.update(Math.atan2(dy, dx), inside ? near * center : 0)) moving = true;
+          }
+
+          root.style.setProperty('--mx', mx + 'px');
+          root.style.setProperty('--my', my + 'px');
+          if (cursor) cursor.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
+
+          raf = moving ? requestAnimationFrame(tick) : null;
+        };
+        const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
+
+        window.addEventListener('pointermove', (e) => {
+          mx = e.clientX; my = e.clientY;
+          inside = true;
+          if (cursor) cursor.classList.add('is-visible');
+          kick();
+        }, { passive: true });
+        document.addEventListener('pointerleave', () => {
+          inside = false;
+          if (cursor) cursor.classList.remove('is-visible');
+          kick();
         });
-      });
+        // písma se načítají asynchronně, šířky písmen se po načtení změní
+        window.addEventListener('resize', measure);
+        if (document.fonts) document.fonts.addEventListener('loadingdone', measure);
 
-      document.addEventListener('mouseleave', function() {
-        shimmerEls.forEach(function(el) {
-          el.style.backgroundImage = '';
+        document.querySelectorAll('a, button, [data-blur]').forEach((el) => {
+          el.addEventListener('pointerenter', () => cursor && cursor.classList.add('is-hover'));
+          el.addEventListener('pointerleave', () => cursor && cursor.classList.remove('is-hover'));
         });
-      });
-    })();
 
-    // fluid font scaling — pouze zmenšuje na nízkých oknech, NIKDY nezvětšuje nad základní 16px
-    (function() {
-      var h = document.documentElement;
-      var b = document.body;
-      function ratio() { return window.innerHeight / (b.offsetHeight * 1.05); }
-      function update() {
-        h.style.fontSize = '';
-        if (window.innerWidth <= 768) { return; }
-        if (ratio() >= 1) { return; } // obsah se vejde — drž návrhovou velikost
-        var bf = 16;
-        for (var i = 0; i < 10; i++) {
-          var r = ratio();
-          if (r >= 1) break;
-          bf = bf * r;
-          h.style.fontSize = bf + 'px';
-        }
+        document.querySelectorAll('.btn').forEach((el) => {
+          el.addEventListener('pointermove', (e) => {
+            const r = el.getBoundingClientRect();
+            el.style.setProperty('--bx', `${e.clientX - r.left}px`);
+            el.style.setProperty('--by', `${e.clientY - r.top}px`);
+          });
+        });
+
+        document.querySelectorAll('[data-magnetic]').forEach((el) => {
+          const strength = parseFloat(el.dataset.magnetic) || 0.25;
+          el.addEventListener('pointermove', (e) => {
+            const r = el.getBoundingClientRect();
+            const dx = e.clientX - (r.left + r.width / 2);
+            const dy = e.clientY - (r.top + r.height / 2);
+            el.style.transform = `translate(${dx * strength}px, ${dy * strength}px)`;
+          });
+          el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+        });
+
+        document.querySelectorAll('.link-wave').forEach(initWaveLink);
       }
-      window.addEventListener('resize', update);
-      update();
+
+      /* ======================================================================
+         Pavouk v terči: šest os, každá má výchozí hodnotu. Osa ve směru myši
+         se protáhne skoro k okraji, sousední o kus, protější se stáhnou.
+         Štítek nejbližší osy se rozsvítí.
+         ====================================================================== */
+      function initRadar() {
+        const area = document.querySelector('.radar-area');
+        if (!area) return null;
+        const nodes = [...document.querySelectorAll('.radar-node')];
+        const tags = [...document.querySelectorAll('.hero-visual .tag-float')];
+        const C = 300, R = 285;
+        const base = [0.62, 0.5, 0.56, 0.66, 0.5, 0.58];
+        const angles = base.map((_, i) => (-90 + i * 60) * Math.PI / 180);
+        const values = base.slice();
+
+        const draw = () => {
+          const pts = values.map((v, i) => [C + Math.cos(angles[i]) * v * R, C + Math.sin(angles[i]) * v * R]);
+          area.setAttribute('points', pts.map((p) => `${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' '));
+          nodes.forEach((n, i) => { n.setAttribute('cx', pts[i][0].toFixed(1)); n.setAttribute('cy', pts[i][1].toFixed(1)); });
+        };
+
+        // angle: směr ke kurzoru, strength: 0–1; vrací true, dokud se tvar hýbe
+        const update = (angle, strength) => {
+          let moving = false, best = -1, bestW = 0;
+          values.forEach((v, i) => {
+            const w = Math.max(0, Math.cos(angles[i] - angle)) ** 2;
+            const target = base[i] + strength * (w * (0.97 - base[i]) - (1 - w) * 0.2 * base[i]);
+            values[i] = v + (target - v) * 0.12;
+            if (Math.abs(target - values[i]) > 0.001) moving = true;
+            if (w * strength > bestW) { bestW = w * strength; best = i; }
+          });
+          tags.forEach((t, i) => t.classList.toggle('is-active', i === best && bestW > 0.4));
+          draw();
+          return moving;
+        };
+
+        return { update };
+      }
+
+      /* ======================================================================
+         Rozdělí nadpis na písmena (slova drží pohromadě, aby se nelámala).
+         Čtečkám zůstane celý text v aria-label.
+         ====================================================================== */
+      function splitLetters(el) {
+        el.setAttribute('aria-label', el.textContent.replace(/\s+/g, ' ').trim());
+        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach((node) => {
+          const frag = document.createDocumentFragment();
+          node.textContent.split(/(\s+)/).forEach((part) => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            const word = document.createElement('span');
+            word.className = 'word';
+            [...part].forEach((c) => {
+              const ch = document.createElement('span');
+              ch.className = 'ch';
+              ch.textContent = c;
+              word.appendChild(ch);
+            });
+            frag.appendChild(word);
+          });
+          node.replaceWith(frag);
+        });
+        el.querySelectorAll('.line').forEach((line) => line.setAttribute('aria-hidden', 'true'));
+        el.classList.add('split');
+        return [...el.querySelectorAll('.ch')].map((ch) => ({ el: ch, t: 0 }));
+      }
+
+      /* ======================================================================
+         Linka pod odkazem: pohyb myši ji rozvlní, vlna běží směrem pohybu
+         a nejsilnější je u kurzoru. Když se myš zastaví, linka se uklidní.
+         ====================================================================== */
+      function initWaveLink(link) {
+        const line = link.querySelector('.link-wave-line');
+        const svg = line && line.querySelector('svg');
+        const path = svg && svg.querySelector('path');
+        if (!path) return;
+        const H = 12, MID = H / 2, STEP = 2, WAVELENGTH = 26, AMP = 3.6;
+        let w = 0, px = 0, lastX = null, lastY = null, energy = 0, phase = 0, dir = 1, raf = null;
+
+        const draw = () => {
+          let d = '';
+          const n = Math.ceil(w / STEP);
+          for (let i = 0; i <= n; i++) {
+            const x = Math.min(w, i * STEP);
+            const ends = Math.sin(Math.PI * x / w); // konce linky zůstávají na místě
+            const near = Math.exp(-(((x - px) / (w * 0.3)) ** 2));
+            const y = MID + Math.sin((x / WAVELENGTH) * 2 * Math.PI - phase) * AMP * energy * ends * (0.3 + 0.7 * near);
+            d += `${x ? 'L' : 'M'}${x} ${y.toFixed(2)}`;
+          }
+          path.setAttribute('d', d);
+        };
+        const frame = () => {
+          energy *= 0.95;
+          phase += 0.09 * dir;
+          if (energy < 0.005) { energy = 0; raf = null; } else raf = requestAnimationFrame(frame);
+          draw();
+        };
+
+        link.addEventListener('pointerenter', (e) => {
+          w = line.offsetWidth;
+          svg.setAttribute('viewBox', `0 0 ${w} ${H}`);
+          lastX = e.clientX; lastY = e.clientY;
+          draw();
+        });
+        link.addEventListener('pointermove', (e) => {
+          if (lastX === null) { lastX = e.clientX; lastY = e.clientY; }
+          const dx = e.clientX - lastX, dy = e.clientY - lastY;
+          lastX = e.clientX; lastY = e.clientY;
+          px = e.clientX - link.getBoundingClientRect().left - line.offsetLeft;
+          if (dx) dir = Math.sign(dx);
+          phase += dx * 0.1;
+          energy = Math.min(1, energy + Math.hypot(dx, dy) * 0.035);
+          if (!raf) raf = requestAnimationFrame(frame);
+        });
+        link.addEventListener('pointerleave', () => { lastX = null; });
+      }
     })();
   </script>
-
 </body>
 </html>
